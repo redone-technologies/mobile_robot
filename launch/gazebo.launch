@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="robot_name" default="mobile_robot"/>
+	<arg name="world_file" default="$(find mobile_robot)/worlds/test_map.world"/>
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="use_sim_time" value="true"/>
+	    <arg name="debug" value="false"/>
+	    <arg name="gui" value="true" />
+	    <arg name="world_name" value="$(arg world_file)"/>
+	</include>
+
+	<param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find mobile_robot)/urdf/mobile_robot.urdf'" /> 
+	<node  name="joint_state_publisher"  pkg="joint_state_publisher"   type="joint_state_publisher" />
+	<node  name="robot_state_publisher"  pkg="robot_state_publisher"   type="robot_state_publisher" />
+
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+		args="-urdf -model mobile_robot -param robot_description"/> 
+
+
+    <node name="vehicle_state_publisher" pkg="robot_state_publisher"
+          type="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+
+
+	<node name="rviz" pkg="rviz" respawn="false" type="rviz" args="-d $(find mobile_robot)/config/mobile_robot.rviz"/>
+
+
+</launch>
+
