@@ -1,0 +1,514 @@
+<?xml version="1.0"?>
+<robot
+	name="mobile_robot">
+
+
+	<link
+		name="Motor_baseplate">
+		<inertial>
+			<origin	xyz="-0.095084 2.4984E-12 0.001437"	rpy="0 0 3.14" />
+			<mass		value="0.26955" />
+			<inertia
+				ixx="0.0019634"
+				ixy="-4.3075E-14"
+				ixz="-0.00010131"
+				iyy="0.0028875"
+				iyz="1.3275E-15"
+				izz="0.0047856" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Motor_baseplate.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="1.0 1.0 1.0 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Motor_baseplate.STL" />
+			</geometry>
+		</collision>
+	</link>
+
+
+	<link name="base_footprint"/>
+	<joint name="base_joint" type="fixed">
+		<origin xyz="0 0 0.0102" rpy="0 0 0" />
+		<parent link="base_footprint"/>
+		<child link="Motor_baseplate" />
+	</joint>
+
+	<link	name="Left_wheel">
+		<inertial>
+			<origin	xyz="0.090207 9.7449E-07 -6.0063E-07"	rpy="0 0 0" />
+			<mass		value="2.1873" />
+			<inertia
+				ixx="0.016817"
+				ixy="4.8749E-08"
+				ixz="-6.4831E-08"
+				iyy="0.0094114"
+				iyz="-1.9511E-08"
+				izz="0.0094114" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Left_wheel.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="0 0 0 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Left_wheel.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="Left_wheel_joint" type="continuous">
+		<origin	xyz="0 0.114 0.022"	rpy="-0.20708 -8.4323E-07 1.5708" />
+		<parent	link="Motor_baseplate" />
+		<child	link="Left_wheel" />
+		<axis		xyz="-1 0 0" />
+	</joint>
+
+
+	<link	name="Left_wheelcover">
+		<inertial>
+			<origin	xyz="0.057053 -5.9334E-06 2.5549E-05"	rpy="0 0 0" />
+			<mass 	value="0.25632" />
+			<inertia
+				ixx="0.00064924"
+				ixy="-7.647E-09"
+				ixz="3.6365E-08"
+				iyy="0.00034924"
+				iyz="-2.3054E-08"
+				izz="0.0003494" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Left_wheelcover.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="1.0 1.0 1.0 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Left_wheelcover.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint	name="Left_wheelcover_joint"	type="fixed">
+		<origin	xyz="0.05 0 0" rpy="-3.5319E-16 -4.5232E-19 2.1176E-22" />
+		<parent	link="Left_wheel" />
+		<child	link="Left_wheelcover" />
+		<axis		xyz="0 0 0" />
+	</joint>
+
+
+	<link	name="Right_wheel">
+		<inertial>
+			<origin	xyz="0.090215 -1.3816E-06 -6.0009E-06" rpy="0 0 0" />
+			<mass		value="2.1999" />
+			<inertia
+				ixx="0.016843"
+				ixy="-6.2156E-08"
+				ixz="-2.3022E-07"
+				iyy="0.0094245"
+				iyz="1.7961E-09"
+				izz="0.0094246" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Right_wheel.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="0 0 0 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Right_wheel.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="Right_wheel_joint" type="continuous">
+		<origin	xyz="0 -0.114 0.022" rpy="-0.085264 -9.5588E-07 -1.5708" />
+		<parent	link="Motor_baseplate" />
+		<child	link="Right_wheel" />
+		<axis		xyz="1 0 0" />
+	</joint>
+
+	<link	name="Right_wheelcover">
+		<inertial>
+			<origin	xyz="0.056526 -5.0476E-07 -2.5328E-06"	rpy="0 0 0" />
+			<mass		value="0.27103" />
+			<inertia
+				ixx="0.00066983"
+				ixy="1.1871E-09"
+				ixz="3.1835E-09"
+				iyy="0.00036231"
+				iyz="-5.6635E-10"
+				izz="0.00036234" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Right_wheelcover.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="1.0 1.0 1.0 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Right_wheelcover.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint	name="Right_wheelcover_joint"	type="fixed">
+		<origin	xyz="0.05 0 0" rpy="-7.0013E-16 2.1176E-22 8.4703E-22" />
+		<parent	link="Right_wheel" />
+		<child	link="Right_wheelcover" />
+		<axis		xyz="0 0 0" />
+	</joint>
+
+
+	<link	name="Main_body">
+		<inertial>
+			<origin	xyz="0.14964 -0.13417 -0.21594"	rpy="0 0 0" />
+			<mass		value="1.5442" />
+			<inertia
+				ixx="0.047875"
+				ixy="-4.6224E-05"
+				ixz="1.3134E-05"
+				iyy="0.053295"
+				iyz="0.0036517"
+				izz="0.033917" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Main_body.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="0 0 0 0 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Main_body.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint	name="Main_body_joint"	type="fixed">
+		<origin	xyz="0.167 0.15 -0.008"	rpy="-1.5708 -6.123E-17 -1.5708" />
+		<parent	link="Motor_baseplate" />
+		<child	link="Main_body" />
+		<axis		xyz="0 0 0" />
+	</joint>
+
+
+	<link	name="Front_Rear_cover">
+		<inertial>
+			<origin	xyz="5.0053E-05 0.11115 -0.14218"	rpy="0 0 0" />
+			<mass		value="0.61934" />
+			<inertia
+				ixx="0.030537"
+				ixy="-3.0862E-06"
+				ixz="-7.6957E-06"
+				iyy="0.035972"
+				iyz="-0.00066515"
+				izz="0.010161" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Front_Rear_cover.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="1.0 1.0 1.0 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Front_Rear_cover.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="Front_Rear_cover_joint" type="fixed">
+		<origin	xyz="0.15 0 -0.091502" rpy="0 0 3.1416" />
+		<parent	link="Main_body" />
+		<child	link="Front_Rear_cover" />
+		<axis 	xyz="0 0 0" />
+	</joint>
+
+
+	<link	name="Caster_plate">
+		<inertial>
+			<origin	xyz="-4.7647E-09 -0.017081 -0.015959"	rpy="0 0 0" />
+			<mass		value="0.007789" />
+			<inertia
+				ixx="3.4116E-06"
+				ixy="6.054E-12"
+				ixz="-1.9305E-12"
+				iyy="3.3585E-06"
+				iyz="-7.7171E-07"
+				izz="3.2323E-06" />
+		</inertial>
+		<visual>
+			<origin		xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh		filename="package://mobile_robot/meshes/Caster_plate.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="1 1 1 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Caster_plate.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint	name="Caster_plate_joint"	type="continuous">
+		<origin	xyz="0.15 0.013 -0.4275"	rpy="1.5708 0.20142 1.0623E-15" />
+		<parent	link="Main_body" />
+		<child	link="Caster_plate" />
+		<axis 	xyz="0 0 1" />
+	</joint>
+
+
+	<link	name="Caster">
+		<inertial>
+			<origin	xyz="-8.6059E-09 -1.2014E-08 -2.6406E-08"	rpy="0 0 0" />
+			<mass		value="0.088423" />
+			<inertia
+				ixx="4.2254E-05"
+				ixy="6.848E-12"
+				ixz="-3.89E-11"
+				iyy="2.7145E-05"
+				iyz="-3.794E-10"
+				izz="2.7144E-05" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Caster.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="0 0 0 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Caster.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="Caster_joint" type="continuous">
+		<origin	xyz="0 -0.029001 -0.039" rpy="-1.9055 -3.0531E-16 3.0531E-16" />
+		<parent	link="Caster_plate" />
+		<child	link="Caster" />
+		<axis		xyz="1 0 0" />
+	</joint>
+
+
+	<link	name="Battery">
+		<inertial>
+			<origin	xyz="9.05E-05 -1.9954E-08 -0.047057" rpy="0 0 0" />
+			<mass		value="1.3923" />
+			<inertia
+				ixx="0.002143"
+				ixy="-2.5143E-12"
+				ixz="6.2298E-06"
+				iyy="0.0036758"
+				iyz="-1.1014E-09"
+				izz="0.0037628" />
+		</inertial>
+		<visual>
+			<origin	xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Battery.STL" />
+			</geometry>
+			<material	name="">
+				<color	rgba="0.79216 0.81961 0.93333 1" />
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0"	rpy="0 0 0" />
+			<geometry>
+				<mesh	filename="package://mobile_robot/meshes/Battery.STL" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="Battery_joint" type="fixed">
+		<origin	xyz="0.1475 -0.008 -0.397" rpy="1.5708 -4.3368E-17 -3.1416" />
+		<parent	link="Main_body" />
+		<child	link="Battery" />
+		<axis 	xyz="0 0 0" />
+	</joint>
+
+	<gazebo reference="Motor_baseplate">
+		<material value="Gazebo/White"/>
+	</gazebo>
+	<gazebo reference="Main_body">
+		<material value="Gazebo/Black"/>
+	</gazebo>
+	<gazebo reference="Front_Rear_cover">
+		<material value="Gazebo/White"/>
+	</gazebo>
+	<gazebo reference="Caster_plate">
+		<material value="Gazebo/White"/>
+	</gazebo>
+	<gazebo reference="Caster">
+		<material value="Gazebo/Black"/>
+	</gazebo>
+	<gazebo reference="Left_wheel">
+		<material value="Gazebo/Grey "/>
+	</gazebo>
+	<gazebo reference="Left_wheelcover">
+		<material value="Gazebo/Black"/>
+	</gazebo>
+	<gazebo reference="Right_wheel">
+		<material value="Gazebo/Grey "/>
+	</gazebo>
+	<gazebo reference="Right_wheelcover">
+		<material value="Gazebo/Black"/>
+	</gazebo>
+
+
+
+	<transmission name="Left_wheel_joint_trans">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="Left_wheel_joint" >
+			 <hardwareInterface>EffortJointInterface</hardwareInterface>
+		</joint> 
+		<actuator name="Left_wheel_joint_motor">
+			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+		</transmission>
+
+	<transmission name="Right_wheel_joint_trans">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="Right_wheel_joint" >
+			 <hardwareInterface>EffortJointInterface</hardwareInterface>
+		</joint> 
+		<actuator name="Right_wheel_joint_motor">
+			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	<gazebo>
+		<plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+			<rosDebugLevel>Debug</rosDebugLevel>
+			<publishWheelTF>true</publishWheelTF>
+			<robotNamespace>/</robotNamespace>
+			<publishTf>true</publishTf>
+			<publishWheelJointState>true</publishWheelJointState>
+			<alwaysOn>true</alwaysOn>
+			<updateRate>10.0</updateRate>
+			<legacyMode>false</legacyMode>
+			<leftJoint>Right_wheel_joint</leftJoint>
+			<rightJoint>Left_wheel_joint</rightJoint>
+			<wheelSeparation>0.412</wheelSeparation>
+			<wheelDiameter>0.226</wheelDiameter>
+			<broadcastTF>1</broadcastTF>
+			<wheelTorque>30</wheelTorque>
+			<wheelAcceleration>1.8</wheelAcceleration>
+			<commandTopic>/cmd_vel</commandTopic>
+			<odometryFrame>/odom</odometryFrame> 
+			<odometryTopic>/odom</odometryTopic> 
+			<robotBaseFrame>base_footprint</robotBaseFrame>
+		</plugin>
+	</gazebo> 
+
+
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace></robotNamespace>
+		</plugin>
+	</gazebo>
+
+
+
+	<link name="lrf_link">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+			<material name="Blue" />
+		</visual>
+	</link>
+
+	<joint name="lrf_joint" type="fixed">
+		<!-- <origin xyz="-0.42 0 0.08" rpy="0 0 3.14" /> -->
+		<origin xyz="0.10 0 0.25" rpy="0 0 0" />
+		<parent link="base_footprint"/>
+		<child link="lrf_link" />
+	</joint>
+
+	<gazebo reference="lrf_link">
+		<material>Gazebo/Blue</material>
+		<turnGravityOff>false</turnGravityOff>
+		<sensor type="ray" name="head_hokuyo_sensor">
+			<pose>0.05 0 0 0 0 0</pose>
+			<visualize>false</visualize>
+			<update_rate>10</update_rate>
+			<ray>
+				<scan>
+					<horizontal>
+						<samples>181</samples>
+						<resolution>1</resolution>
+						<min_angle>-1.57</min_angle>
+						<max_angle>1.57</max_angle>
+					</horizontal>
+				</scan>
+				<range>
+					<min>0.50</min>
+					<max>20.0</max>
+					<resolution>0.1</resolution>
+				</range>
+				<noise>
+					<type>gaussian</type>
+					<mean>0.0</mean>
+					<stddev>0.01</stddev>
+				</noise>
+			</ray>
+			<plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+				<topicName>/scan</topicName>
+				<frameName>lrf_link</frameName>
+			</plugin>
+		</sensor>
+	</gazebo>
+
+
+	<gazebo>
+		<plugin name="gazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
+			<alwaysOn>true</alwaysOn>
+			<updateRate>30.0</updateRate>
+			<bodyName>base_footprint</bodyName>
+			<topicName>ground_truth_pose</topicName>
+			<gaussianNoise>0.0</gaussianNoise>
+			<frameName>map</frameName>
+		</plugin>
+	</gazebo> 
+
+</robot>

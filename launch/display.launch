@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find mobile_robot)/urdf/mobile_robot.urdf'" /> 
+
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node  name="joint_state_publisher"  pkg="joint_state_publisher"   type="joint_state_publisher" />
+  <node  name="robot_state_publisher"  pkg="robot_state_publisher"   type="robot_state_publisher" />
+
+  <node name="rviz" pkg="rviz" respawn="false" type="rviz" args="-d $(find mobile_robot)/config/mobile_robot.rviz"/>
+
+</launch>
