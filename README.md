@@ -11,6 +11,9 @@ sudo apt install ros-kinetic-ackermann-* ros-kinetic-controller-* ros-kinetic-co
 
 # SLAM
 roslaunch mobile_robot slam.launch
+
 rosrun gmapping slam_gmapping scan:=scan _odom_frame:=odom _base_frame:=base_footprint
+
 rosrun map_server map_saver -f testmap
+
 
